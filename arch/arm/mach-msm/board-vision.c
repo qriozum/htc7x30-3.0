@@ -1980,9 +1980,10 @@ static struct platform_device msm_migrate_pages_device = {
 };
 
 static struct android_pmem_platform_data android_pmem_adsp_pdata = {
-       .name = "pmem_adsp",
-       .allocator_type = PMEM_ALLOCATORTYPE_BITMAP,
-       .cached = 1,
+
+	.name = "pmem_adsp",
+	.allocator_type = PMEM_ALLOCATORTYPE_BITMAP,
+	.cached = 0,
 	.memory_type = MEMTYPE_EBI1,
 };
 
@@ -3046,16 +3047,6 @@ static int __init board_serialno_setup(char *serialno)
 }
 __setup("androidboot.serialno=", board_serialno_setup);
 
-#ifdef CONFIG_MDP4_HW_VSYNC
-static void vision_te_gpio_config(void)
-{
-	uint32_t te_gpio_table[] = {
-	PCOM_GPIO_CFG(30, 1, GPIO_INPUT, GPIO_PULL_DOWN, GPIO_2MA),
-	};
-	config_gpio_table(te_gpio_table, ARRAY_SIZE(te_gpio_table));
-}
-#endif
-
 static struct platform_device *devices[] __initdata = {
         &ram_console_device,
 #if defined(CONFIG_SERIAL_MSM) || defined(CONFIG_MSM_SERIAL_DEBUGGER)
@@ -3294,9 +3285,6 @@ static void __init vision_init(void)
 
 	i2c_register_board_info(0, i2c_devices,	ARRAY_SIZE(i2c_devices));
         vision_init_keypad();
-#ifdef CONFIG_MDP4_HW_VSYNC
-	vision_te_gpio_config();
-#endif
 	vision_init_panel();
 	vision_audio_init();
 	vision_wifi_init();
