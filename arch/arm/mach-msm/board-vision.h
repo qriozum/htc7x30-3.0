@@ -48,7 +48,7 @@ extern struct platform_device msm_device_mddi0;
 #define MSM_RAM_CONSOLE_SIZE	0x00100000
 
 #define MSM_PMEM_ADSP_BASE	0x2BA00000
-#define MSM_PMEM_ADSP_SIZE	0x01D00000
+#define MSM_PMEM_ADSP_SIZE	0x02C00000
 
 #define MSM_PMEM_AUDIO_SIZE	0x00200000
 
