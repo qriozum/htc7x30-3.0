@@ -3284,7 +3284,7 @@ static void __init vision_init(void)
 		pr_err("failed to create board_properties\n");
 
 	i2c_register_board_info(0, i2c_devices,	ARRAY_SIZE(i2c_devices));
-	vision_init_keypad();
+        vision_init_keypad();
 	vision_init_panel();
 	vision_audio_init();
 	vision_wifi_init();
